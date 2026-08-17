@@ -1,89 +1,59 @@
-![GitHub](https://img.shields.io/github/license/PuneethReddyHC/online-shopping-system-advanced)
-![](https://visitor-badge.glitch.me/badge?page_id=puneethreddyhc.shop)
+# 🛡️ Online Shopping System - Security Audit & Hardening
 
-<a href="https://www.buymeacoffee.com/PuneethReddyHC" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="195" height="55"></a>
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?logo=php)](https://www.php.net/)
+[![Security Audit](https://img.shields.io/badge/Status-In%20Progress-orange)](#)
 
-> ## Updated project with extra Features like WISHLIST, List Orders, add Reviews, updated routing, resolved search bug is available for Premium 
+> **Disclaimer:** This repository is a security-focused fork of the original [PuneethReddyHC/online-shopping-system](https://github.com/PuneethReddyHC/online-shopping-system). It serves as a hands-on laboratory for source code review, identifying OWASP Top 10 vulnerabilities, writing Proof-of-Concept (PoC) exploits, and refactoring legacy PHP code using secure coding practices.
 
-[![Youtube Video](https://img.youtube.com/vi/gLwfj67GI8A/0.jpg)](https://youtu.be/gLwfj67GI8A)
+---
 
+## 📌 Project Goals
+- **Source Code Audit:** Perform thorough static code analysis (SAST) and manual review on legacy PHP modules.
+- **Vulnerability Remediation:** Fix critical vulnerabilities (e.g., SQL Injection, Plaintext Passwords, Broken Access Control).
+- **Modernization:** Refactor raw SQL queries to Prepared Statements (PDO/MySQLi) and update deprecated code to support modern PHP versions.
+- **Documentation:** Provide clear PoCs and explanation of vulnerabilities for educational and resume purposes.
 
-# online-shopping-with-advanced-admin-page
-Updated version
+---
 
-online shopping system is a [DBMS project] with both admin and user layouts.
+## ⚠️ Identified & Fixed Vulnerabilities (Audit Log)
 
-# Installation
+> NOTING yet.
 
-1. Install XAMPP or WAMPP.
+*(This table will be updated as the audit progresses).*
 
-2. Open XAMPP Control panal and start [apache] and [mysql] .
+---
 
-3. Download project from github(https://github.com/PuneethReddyHC/online-shopping-system-with-advanced-admin-page.git)  
-    OR follow gitbash commands
-    
-    i>cd C:\\xampp\htdocs\
-    
-    ii>git clone https://github.com/PuneethReddyHC/online-shopping-system-with-advanced-admin-page.git
-    
-4. extract files in C:\\xampp\htdocs\.
+## 🛠️ Environment & Setup (Podman / Docker)
 
-5. open link localhost/phpmyadmin
+### Prerequisites
+- Container runtime (Podman / Docker) & Podman Compose / Docker Compose
 
-6. click on new at side navbar.
+### Quick Start
+1. Clone the repository:
 
-7. give a database name as (onlineshop) hit on create button.
-
-8. after creating database name click on import.
-
-9. browse the file in directory[online-shopping-system-with-advanced-admin-page/database/onlineshop.sql].
-
-10. after importing successfully.
-
-11. open any browser and type http://localhost/online-shopping-system-with-advanced-admin-page-master.
-
-12. first register and then login
-
-13. admin login details  Email=admin@gmail.com or username = admin and Password=123456789.
-
-## If you like my project 
-Bye me Cup of coffee
-
-## visit my other repository with different admin pages with below link
-https://github.com/PuneethReddyHC/online-shopping-system-advanced
-
-https://github.com/PuneethReddyHC/event-management
-
-##  If you like my project hit a star button
+	```bash
+	git clone [https://github.com/you-in-you/online-shopping-system-security-audit.git](https://github.com/you-in-you/online-shopping-system-security-audit.git)
+	cd online-shopping-system-security-audit
+	```
 
 
+2. Spin up the containers (PHP-FPM/Apache + MariaDB):
+	```bash
+	podman-compose up -d --build
+	```
 
-# Screenshots
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/adduser.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/adminproductadd.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/manageuser.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/manageuseradmin.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/productlistadmin.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/productlist.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/cartpage.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/homepage.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/loginmodal.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/mainpage.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/productpage.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/productzoom.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/registermodal.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/searchfilter.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/searchpage.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/store.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/storepage.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-with-advanced-admin-page/blob/master/screenshot/storepage1.png)
+3. Import the database schema from `database/onlineshop.sql`.
+	```bash
+	podman exec -i audit-db mariadb -u root -prootpassword onlineshop < database/onlineshop.sql
+	```
+4. Access the application at `http://localhost:8080`.
 
+---
 
+## 📄 License & Attribution
 
+* Original application created by [PuneethReddyHC](https://github.com/PuneethReddyHC).
+* Licensed under the [Apache License 2.0](https://www.google.com/search?q=LICENSE).
+* Security refactoring, audit documentation, and patches maintained by [you-in-you](https://github.com/you-in-you).
 
-
-
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.

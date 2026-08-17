@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  db:
+    image: mariadb:lts
+    container_name: audit-db
+    environment:
+      MARIADB_ROOT_PASSWORD: rootpassword
+      MARIADB_DATABASE: onlineshop
+      MARIADB_USER: shop_user
+      MARIADB_PASSWORD: shoppassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database/onlineshop.sql:/docker-entrypoint-initdb.d/onlineshop.sql:Z
+    restart: always
+
+  web:
+    build: .
+    container_name: audit-web
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html:Z
+    depends_on:
+      - db
+    restart: always
+
+volumes:
+  db_data:
