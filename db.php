@@ -1,8 +1,8 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "audit-db";
+$username = "shop_user";
+$password = "shoppassword";
 $db = "onlineshop";
 
 // Create connection

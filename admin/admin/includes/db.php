@@ -1,10 +1,9 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "audit-db";
+$username = "shop_user";
+$password = "shoppassword";
 $db = "onlineshop";
-
 
 // Create connection
 $con = mysqli_connect($servername, $username, $password,$db);

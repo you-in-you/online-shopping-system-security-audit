@@ -12,8 +12,13 @@ $email    = "";
 $errors = array();
 $reg_date = date("Y/m/d");
 
-// connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'onlineshop');
+$servername = "audit-db";
+$username = "shop_user";
+$password = "shoppassword";
+$db = "onlineshop";
+
+// Create connection
+$con = mysqli_connect($servername, $username, $password,$db);
 
 
 // REGISTER USER
