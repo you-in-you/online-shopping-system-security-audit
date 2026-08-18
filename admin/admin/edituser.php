@@ -1,7 +1,7 @@
 
     <?php
 session_start();
-include("../../db.php");
+require_once __DIR__ . '/../../db.php';
 $user_id=$_REQUEST['user_id'];
 
 

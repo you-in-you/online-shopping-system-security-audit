@@ -1,7 +1,7 @@
 
-    <?php
+<?php
 session_start();
-include("../../db.php");
+require_once __DIR__ . '/../../db.php';
 
 include "sidenav.php";
 include "topheader.php";
