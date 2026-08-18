@@ -56,14 +56,12 @@ include "header.php";
 					<!-- Product main img -->
 					
 					<?php 
-								include 'db.php';
+
 								$product_id = $_GET['p'];
 								
 								$sql = " SELECT * FROM products ";
 								$sql = " SELECT * FROM products WHERE product_id = $product_id";
-								if (!$con) {
-									die("Connection failed: " . mysqli_connect_error());
-								}
+
 								$result = mysqli_query($con, $sql);
 								if (mysqli_num_rows($result) > 0) 
 								{
@@ -449,7 +447,7 @@ include "header.php";
 								} 
 								?>	
 								<?php
-                    include 'db.php';
+
 								$product_id = $_GET['p'];
                     
 					$product_query = "SELECT * FROM products,categories WHERE product_cat=cat_id AND product_id BETWEEN $product_id AND $product_id+3";

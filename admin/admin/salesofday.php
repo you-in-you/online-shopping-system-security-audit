@@ -1,7 +1,6 @@
-
-    <?php
+<?php
 session_start();
-include("./includes/db.php");
+require_once __DIR__ . '/../../db.php';
 
 error_reporting(0);
 if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')

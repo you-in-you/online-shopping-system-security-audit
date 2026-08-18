@@ -1,7 +1,7 @@
 
-  <?php
- session_start();
-include("./includes/db.php");
+<?php
+session_start();
+require_once __DIR__ . '/../../db.php';
 if (isset($_POST['re_password']))
   {
     $email=$_SESSION['admin_email'];

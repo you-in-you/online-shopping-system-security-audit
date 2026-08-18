@@ -1,20 +1,21 @@
-why site dose not working ?
+### Summary of Changes
 
-    for this line: $servername = "audit-db";
-    in mysqli_connect() when you gave an ip or servername 
-    the function try to connect an mysqli service in the servername 
-    and on the container we not mysql/mariadb on the same container and this is not be 
-    we should be use the container name that the podman translate this name into 
-    container ip that contain database in the virual network on the container
+#### 1. Secure Error Handling & Information Leakage Prevention
+- **Issue:** Database connection errors were directly dumped to the user interface using `mysqli_connect_error()`. This exposed internal network topology, container hostnames, and database schemas (Information Disclosure / OWASP A01:2021).
+- **Fix:** Implemented a `try-catch` block around `mysqli_connect()` using PHP's `Throwable` interface and suppressed raw warnings using the `@` operator.
+- **Client Behavior:** Users are now cleanly redirected to a generic internal server error page (`error.php`) without leaking sensitive backend details.
 
-for the safaty 
-    run database with shop_user user NOT ROOT 
-    if the aplication runs with root user it can delete , modify and creat new database and users or write file in the server (in the case container)
-    if any sqli found in the web aplication it can at stack all of the database service
-    and we chante this in the db.php 
-    $username = "shop_user";
-    $password = "shoppassword";
-    and we change that in 
-    admin/server/server.php
-    admin/admin/includes/db.php
-    
+#### 2. Server-Side Error Logging & Observability
+- **Fix:** Integrated PHP's native `error_log()` function inside the `catch` block to capture precise connection error messages along with ISO timestamps.
+- **Impact:** Errors are now safely routed to container standard error output (`stderr`), enabling centralized log inspection via container tools (`podman logs`) without exposing data to end users.
+
+#### 3. Execution Flow Optimization
+- **Fix:** Moved `require_once "db.php";` to the absolute top of `index.php` before any HTML/UI components (`header.php`) are rendered.
+- **Impact:** Prevents "Headers already sent" warnings, ensures clean HTTP redirects (`Location: error.php`), and avoids partial layout rendering on database failures.
+
+#### 4. Architecture Cleanup & Code Standardisation (DRY Principle)
+- **Issue:** The repository contained a duplicate database connection file (`admin/admin/includes/db.php`) featuring legacy, unsafe error handling (`die(mysqli_connect_error())`). Additionally, various admin endpoints (`salesofday.php`, `orders.php`, `profile.php`) relied on this redundant file, breaking the Single Source of Truth rule and leaking internal database details under error conditions.
+- **Fix:**
+  - Standardised database file inclusions across all admin scripts using absolute directory paths (`require_once __DIR__ . '/../../db.php'`).
+  - Removed the redundant connection script via `git rm admin/admin/includes/db.php`.
+- **Impact:** Enforces the DRY (Don't Repeat Yourself) principle across the codebase. All application routes (public and admin) now route through the single, hardened `db.php` connection handler.
