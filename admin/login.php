@@ -1,4 +1,11 @@
-<?php include("./server/server.php"); ?>
+<?php include("./server/server.php");
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

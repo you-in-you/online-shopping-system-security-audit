@@ -1,5 +1,9 @@
 <?php
-session_start();
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 require_once __DIR__ . '/../../db.php';
 
 $name = "";
@@ -74,6 +78,7 @@ if (isset($_POST['login_admin'])) {
         $query = "SELECT * FROM admin_info WHERE admin_name='$admin_username' AND admin_password='$password'";
         $results = mysqli_query($con, $query);
         if (mysqli_num_rows($results) == 1) {
+            $_SESSION['is_admin'] = true;
             $_SESSION['admin_email'] = $email;
             $_SESSION['admin_name'] = $admin_username;
             $_SESSION['success'] = "You are now logged in";

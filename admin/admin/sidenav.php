@@ -57,6 +57,12 @@
                         </a>
                         
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="reg.php">
+                        <i class="material-icons">person_add</i>
+                        <p>Add Admin</p>
+                      </a>
+                    </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="add_products.php">
                         <i class="material-icons">add</i>

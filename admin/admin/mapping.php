@@ -1,3 +1,16 @@
+<?php
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (!isset($_SESSION['is_admin'])) {
+    header("Location: ../login.php");
+    exit();
+}
+
+?>
+
 <div class="content">
                 <div class="container-fluid">
                     <div class="row">
